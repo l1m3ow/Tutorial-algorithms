@@ -3,7 +3,7 @@
 ---
 
 <div align="center">
-  <img alt="Fotomain" src=".\Сontent\Fotomain.jpg" width="750" height="200"/>
+  <img alt="Fotomain" src=".\Сontent\Fotomain.jpg" width="700" height="350"/>
 </div>
 
 # 📋 ***Оглавление:***
