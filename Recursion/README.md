@@ -1,6 +1,6 @@
 # ***Рекурсия***
 <div align="center">
-  <img alt="Foto1" src="Image/image1.png" />
+  <img alt="Foto1" src="Image/image1.png" width="600" height="400"/>
 </div>
 
 Рекурсия - это такой способ организации вспомогательного алгоритма (подпрограммы), при котором эта подпрограмма (процедура или функция) в ходе выполнения ее операторов обращается сама к себе. То есть в теле функции она вызывает саму себя.
@@ -10,12 +10,11 @@
 2. [НОД](#нод)
 3. [Числа Фибоначчи](#числа-фибоначчи)
 4. [Метод половинного деления](#метод-половинного-деления)
-5. [Мотивация](#мотивация)
-6. [Сумма цифр числа](#сумма-цифр-числа)
-7. [Функция](#функция)
-8. [Ханойская башня](#ханойская-башня)
-9. [Быстрая сортировка](#быстрая-сортировка)
-10. [Выводы и итоги работы](#выводы-и-итоги-работы)
+5. [Сумма цифр числа](#сумма-цифр-числа)
+6. [Функция](#функция)
+7. [Ханойская башня](#ханойская-башня)
+8. [Быстрая сортировка](#быстрая-сортировка)
+9. [Выводы и итоги работы](#выводы-и-итоги-работы)
 
 ## **Факториал**
 Факториал — это математическая функция, применяемая к целым неотрицательным числам.
@@ -37,17 +36,6 @@ n! = 1 × 2 × 3 × ... × n
 
 7! = 1 × 2 × 3 × 4 × 5 × 6 × 7 = 5040
 
-*Блок схема*
-
-```mermaid
-graph TD
-    Start([Factorial]) --> Condition{n == 1?}
-    Condition -->|Да| BaseCase[return 1]
-    Condition -->|Нет| RecursiveCase[return n * Factorialn-1]
-    BaseCase --> End([return])
-    RecursiveCase --> End
-```
-
 *Функция на Go Lang*
 
 ```go
@@ -58,23 +46,6 @@ func Factorial(n int) int {
 		return Factorial(n-1) * n
 	}
 	return 1
-}
-```
-
-*Функция на С++*
-
-```C++
-int Factorial(int n)
-{
-    if (n == 1) 
-    {
-        return 1;
-    }
-    else if (n > 1)
-    {
-        return Factorial(n - 1) * n;
-    }
-    return 1;
 }
 ```
 
@@ -99,22 +70,6 @@ int Factorial(int n)
 
 Значит, НОД(12, 18) = 6.
 
-*Блок схема*
-
-```mermaid
-graph TD
-    Start([НОД a, b]) --> EqualCheck{a == b?}
-    EqualCheck -->|Да| BaseCase[return a]
-    EqualCheck -->|Нет| Compare{a > b?}
-    Compare -->|Да| SubtractA[return a - b, b]
-    Compare -->|Нет| SubtractB[return a, b - a]
-    BaseCase --> End([Конец])
-    SubtractA --> End
-    SubtractB --> End
-```
-
-*Функция на Go Lang*
-
 ```go
 func НОД(a, b int) int {
 	if a > b {
@@ -123,23 +78,6 @@ func НОД(a, b int) int {
 		return НОД(a, b-a)
 	}
 	return a
-}
-```
-
-*Функция на C++*
-
-```C++
-int НОД(int a, int b)
-{
-    if (a > b) 
-    {
-        return НОД(a - b, b);
-    }
-    else if (a < b)
-    {
-        return НОД(a, b - a);
-    }
-    return a;
 }
 ```
 
@@ -162,22 +100,6 @@ int НОД(int a, int b)
 
 * Ветвление деревьев, расположение листьев на стебле.
 
-*Блок схема*
-
-```mermaid
-graph TD
-    Start([Fibonacci]) --> Check{n <= 1?}
-    Check -->|Да| BaseCase[return n]
-    Check -->|Нет| RecursiveCase[Рекурсивные вызовы]
-    RecursiveCase --> Call1[result1 = Fibonacci-1]
-    Call1 --> Call2[result2 = Fibonacci-2]
-    Call2 --> Add[return result1 + result2]
-    BaseCase --> End([Конец])
-    Add --> End
-```
-
-*Функция на Go Lang*
-
 ```go
 func Fibonacci(n int) int {
 	if n == 0 {
@@ -188,27 +110,6 @@ func Fibonacci(n int) int {
 		return Fibonacci(n-1) + Fibonacci(n-2)
 	}
 	return -1
-}
-```
-
-*Функция на C++*
-
-```c++
-int Fibonacci(int n)
-{
-    if (n == 0) 
-    {
-        return 0;
-    }
-    else if (n == 1)
-    {
-        return 1;
-    }
-    else if (n > 1)
-    {
-        return Fibonacci(n - 1) + Fibonacci(n - 2);
-    }
-    return -1;
 }
 ```
 
@@ -235,7 +136,6 @@ int Fibonacci(int n)
 
 $f(x) = \arccos(x) - \sqrt{1 - 0,3x^3}$ — её и будем иследовать.
 
-*Функция на Go Lang*
 ```go
 func f(x float64) float64 {
 	return math.Acos(x) - math.Sqrt(1-0.3*math.Pow(x, 3))
@@ -260,49 +160,6 @@ func Bisection(a, b, epsilon float64) float64 {
 	}
 }
 ```
-
-*Функция на С++*
-
-```C++
-double f(double x)
-{
-    return  acos(x) - sqrt(1 - 0.3 * pow(x, 3));
-}
-
-double Bisection(double a, double b, double epsilon)
-{
-    if (abs(b - a) < epsilon)
-    {
-        return (a + b) / 2;
-    }
-
-    double c = (a + b) / 2;
-    double fc = f(c);
-
-    if (fc == 0)
-    {
-        return c;
-    }
-
-    if (f(a) * fc < 0)
-    {
-        return Bisection(a, c, epsilon);
-    }
-    else
-    {
-        return Bisection(c, b, epsilon);
-    }
-}
-```
-
-Вернуться к [Оглавлению](#оглавление)
-
-## **Мотивация**
-<div align="center">
-  <img alt="Foto1" src="Image/image2.png" />
-</div>
-
-**Молодец. Ты дошел до мотивации! Теперь пора бы немного расслабиться. Осталось совсем чуть-чуть. Почувствуй, как ты прокачал свой мозг! А пока передохни немного и посмотри на этого милого котика. Ты проделал большую работу.**
 
 Вернуться к [Оглавлению](#оглавление)
 
@@ -336,19 +193,6 @@ func Sum(n int) int {
 }
 ```
 
-*Функция на С++*
-
-```C++
-int Sum(int n)
-{
-    if (n < 10)
-    {
-        return n;
-    }
-    return n % 10 + Sum(n / 10);
-}
-```
-
 Вернуться к [Оглавлению](#оглавление)
 
 ## **Функция**
@@ -378,26 +222,6 @@ func f(n int) int {
 	} else {
 		return f(n/2) + f(n/2+1)
 	}
-}
-```
-
-*Функция на C++*
-
-```c++
-int f(int n)
-{
-    if (n == 1)
-    {
-        return 1;
-    }
-    else if (n % 2 == 0) 
-    {
-        return f(n / 2);
-    }
-    else 
-    {
-        return f(n / 2) + f(n / 2 + 1);
-    }
 }
 ```
 
@@ -437,22 +261,6 @@ func Hanoi(n int, A, C, B string) {
 }
 ```
 
-*Функция на С++*
-
-```c++
-void Hanoi(int n, char A, char B, char C) {
-    if (n == 1) 
-    {
-        cout << "Переместить диск 1 с " << A << " на " << C << "\n";
-        return;
-    }
-    
-    Hanoi(n - 1, A, B, C);
-    cout << "Переместить диск " << n << " с " << A << " на " << B << endl;
-    Hanoi(n - 1, B, C, A);
-}
-```
-
 Вернуться к [Оглавлению](#оглавление)
 
 ## **Быстрая сортировка**
@@ -465,8 +273,6 @@ void Hanoi(int n, char A, char B, char C) {
 > Раздели массив так, чтобы все элементы меньше опорного оказались слева, а все элементы больше — справа
 
 > Рекурсивно примени этот же процесс к левой и правой частям
-
-*Функция на Go Lang*
 
 ```go
 func Fast(arr []int) {
@@ -501,50 +307,6 @@ func Fast(arr []int) {
 	fmt.Println("Отсортированный массив:", arr)
 }
 ```
-
-*Функция на C++*
-
-```c++
-void Fast(vector<int>& arr) {
-    cout << "\n---Быстрая сортировка---\n";
-
-    int size = arr.size();
-
-    function<void(int, int)> sort;
-
-    sort = [&](int low, int high) 
-    {
-        if (low < high) 
-        {
-            int per = arr[high];  
-            int i = low - 1;
-
-            for (int j = low; j < high; j++) 
-            {
-                if (arr[j] <= per) 
-                {
-                    i++;
-                    swap(arr[i], arr[j]);
-                }
-            }
-
-            swap(arr[i + 1], arr[high]);
-            int perIndex = i + 1;
-            
-            sort(low, perIndex - 1);
-            sort(perIndex + 1, high);
-        }
-    };
-
-    sort(0, size - 1);
-
-    cout << "Отсортированный массив: ";
-    for (int num : arr) 
-    {
-        cout << num << " ";
-    }
-}
-````
 
 Вернуться к [Оглавлению](#оглавление)
 
@@ -591,10 +353,11 @@ void Fast(vector<int>& arr) {
 
 Вернуться к [Оглавлению](#оглавление)
 
-***Спасибо, что уделили своё время на прочтение и изучение данного проекта на тему: "Рекурсия".***
+[Вернуться на главную страницу](/README.md)
+
 
 <div align="center">
-  <img alt="Foto1" src="Image/image3.png" />
+  <img alt="Foto1" src="Image/image3.png" width="600" height="400" />
 </div>
 
 ---
