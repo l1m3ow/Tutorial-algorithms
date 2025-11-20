@@ -4,28 +4,26 @@ import "fmt"
 
 func main() {
 	var n int
-	fmt.Print("Введите размер массива n > 2: ")
+	fmt.Print("Введите до какого числа N ищете простые числа: ")
 	fmt.Scan(&n)
-	arr := make([]int, n)
+	prime := make([]bool, n+1)
 
-	fmt.Print("Вводите элементы массива n раз: ")
-	for i := 0; i < n; i++ {
-		fmt.Scan(&arr[i])
+	for i := 2; i <= n; i++ {
+		prime[i] = true
 	}
 
-	fmt.Printf("Горный массив arr: %d\n", arr)
-	left, right := 0, n-1
-
-	for left < right {
-		mid := (left + right) / 2
-
-		if arr[mid] < arr[mid+1] {
-			left = mid + 1
-		} else {
-			right = mid
+	for i := 2; i*i <= n; i++ {
+		if prime[i] {
+			for j := i * i; j <= n; j += i {
+				prime[j] = false
+			}
 		}
 	}
 
-	fmt.Printf("Индекс пика: %d\n", right)
-	fmt.Printf("Значение пика: %d\n", arr[right])
+	fmt.Print("Простые числа: ")
+	for i := 2; i <= n; i++ {
+		if prime[i] {
+			fmt.Print(i, " ")
+		}
+	}
 }
