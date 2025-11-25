@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func Inserts(arr []int) {
 	fmt.Println("\n---Сортировка вставками---")
-	start := time.Now()
+	fmt.Printf("Изначальный массив: %d\n", arr)
 
 	size := len(arr)
 
@@ -19,8 +18,6 @@ func Inserts(arr []int) {
 			j--
 		}
 		arr[j+1] = per
+		fmt.Printf("\nПосле прохода номер %d по массиву\nMaссив : %d \n", i, arr)
 	}
-
-	end := time.Since(start)
-	fmt.Printf("Время выполнения в наносекундах: %d ns\n", end.Nanoseconds())
 }

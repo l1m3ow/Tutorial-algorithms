@@ -15,5 +15,5 @@ func main() {
 		arr[i] = rand.Intn(101)
 	}
 
-	Bubble(arr)
+	Inserts(arr)
 }
