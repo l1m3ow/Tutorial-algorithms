@@ -16,9 +16,4 @@ func main() {
 	}
 
 	Bubble(arr)
-	Shaker(arr)
-	Inserts(arr)
-	Choice(arr)
-	Shella(arr)
-	Fast(arr)
 }
