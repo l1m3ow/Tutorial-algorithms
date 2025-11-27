@@ -1,28 +1,40 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
+
+func Shella(arr []int) {
+	fmt.Println("\n---Сортировка алгоритмом Шелла---")
+
+	size := len(arr)
+	gap := size / 2
+
+	for gap > 0 {
+		for i := gap; i < size; i++ {
+			per := arr[i]
+			j := i
+
+			for j >= gap && arr[j-gap] > per {
+				arr[j] = arr[j-gap]
+				j -= gap
+			}
+			arr[j] = per
+		}
+		gap /= 2
+	}
+}
 
 func main() {
-	var n int
-	fmt.Print("Введите до какого числа N ищете простые числа: ")
-	fmt.Scan(&n)
-	size := (n - 1) / 2
-	prime := make([]bool, size+1)
+	var size int
+	fmt.Print("Введите размер массива: ")
+	fmt.Scan(&size)
 
-	for i := 0; i <= size; i++ {
-		prime[i] = true
+	arr := make([]int, size)
+	for i := 0; i < size; i++ {
+		arr[i] = rand.Intn(101)
 	}
 
-	for i := 1; i <= size; i++ {
-		for j := 1; i+j+2*i*j <= size; j++ {
-			prime[i+j+2*i*j] = false
-		}
-	}
-
-	fmt.Print("Простые числа: 2 ")
-	for i := 1; i <= size; i++ {
-		if prime[i] {
-			fmt.Print(i*2+1, " ")
-		}
-	}
+	Shella(arr)
 }
