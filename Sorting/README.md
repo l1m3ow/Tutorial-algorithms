@@ -511,6 +511,7 @@ func partition(arr []int, low, high int) int {
 ```
 
 *Что происходит*
+
 <div align="center">
   <img alt="Gif 4" src="Image/gif4.gif" width="700" height="300"/>
 </div>
