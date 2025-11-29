@@ -3,27 +3,24 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
-func Shella(arr []int) {
-	fmt.Println("\n---Сортировка алгоритмом Шелла---")
+func Gnome(arr []int) {
+	start := time.Now()
 
-	size := len(arr)
-	gap := size / 2
+	i := 1
 
-	for gap > 0 {
-		for i := gap; i < size; i++ {
-			per := arr[i]
-			j := i
-
-			for j >= gap && arr[j-gap] > per {
-				arr[j] = arr[j-gap]
-				j -= gap
-			}
-			arr[j] = per
+	for i < len(arr) {
+		if i > 0 && arr[i-1] > arr[i] {
+			arr[i], arr[i-1] = arr[i-1], arr[i]
+			i--
+		} else {
+			i++
 		}
-		gap /= 2
 	}
+	elapsed := time.Since(start)
+	fmt.Printf("Время в наносекундах: %d ns\n", elapsed.Nanoseconds())
 }
 
 func main() {
@@ -36,5 +33,5 @@ func main() {
 		arr[i] = rand.Intn(101)
 	}
 
-	Shella(arr)
+	Gnome(arr)
 }
