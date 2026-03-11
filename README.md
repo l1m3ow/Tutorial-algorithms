@@ -11,7 +11,6 @@
 2. [Введение в алгоритмы](./Introduction/README.md)  
 3. [Алгоритмы сортировок](./Sorting/README.md) 
 4. [Рекурсия](./Recursion/README.md) 
-5. [Ассоциативные массивы](./Associative_arrays/README.md)
 
 ## 🚀 ***О проекте:***
 
